@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="header-bar">
+  <h1>My Expense Tracker</h1>
+
+  <div class="week-controls">
+    <label for="week-select">Week:</label>
+    <select id="week-select"></select>
+    <button id="new-week-btn">+ New Week</button>
+  </div>
+</div>
+
+
+<div class="container">
+
+    <!-- LEFT COLUMN: Setup -->
+    <div class="left-column">
+        <h2>Starting Balance</h2>
+        <input type="number" placeholder="Enter your cash" id="starting-balance" onchange="calculateBalance()">
+
+        <h2>Income</h2>
+        <input type="number" placeholder="Amount" id="income-amount" onchange="calculateIncome()">
+        <select id="income-frequency" onchange="calculateIncome()">
+            <option>Weekly</option>
+            <option>Monthly</option>
+        </select>
+
+        <h2>Fixed Expenses</h2>
+        <input type="text" placeholder="Expense name (e.g., Netflix)" id="expense-name">
+        <input type="number" placeholder="Amount" id="expense-amount">
+        <button id="add-expense-btn" onclick="addExpense()">Add Expense</button>
+    </div>
+
+    <!-- MIDDLE COLUMN: Transactions -->
+    <div class="middle-column">
+        <h2>Transactions</h2>
+        <input type="text" placeholder="Description (e.g., Grocery shopping)" id="transaction-desc">
+        <input type="number" placeholder="Amount" id="transaction-amount">
+        <select id="transaction-category">
+            <option>Groceries</option>
+            <option>Entertainment</option>
+            <option>Bills</option>
+            <option>Transport</option>
+            <option>Other</option>
+        </select>
+        <button id="add-transaction-btn" onclick="addTransaction()">Add Transaction</button>
+
+        <h2>Summary</h2>
+
+<table class="summary-table">
+  <tr>
+    <td>Current Balance</td>
+    <td>$<span id="balance">0</span></td>
+  </tr>
+  <tr>
+    <td>Total Income</td>
+    <td>$<span id="income">0</span></td>
+  </tr>
+  <tr>
+    <td>Total Expenses</td>
+    <td>$<span id="expenses">0</span></td>
+  </tr>
+</table>
+
+    </div>
+
+    <!-- RIGHT COLUMN: Chart -->
+    <div class="right-column">
+        <h2>Spending Breakdown</h2>
+        
+
+<canvas id="expense-chart"></canvas>
+<div id="percent-breakdown"></div>
+
+    </div>
+
+    <!-- BOTTOM: History tables -->
+    <div class="history">
+        <h2>Expense & Transaction History</h2>
+
+        <div class="history-grid">
+            <div class="history-box">
+                <h3>Fixed Expenses</h3>
+                <div id="expense-list"></div>
+            </div>
+
+            <div class="history-box">
+                <h3>Transactions</h3>
+                <div id="transaction-list"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
